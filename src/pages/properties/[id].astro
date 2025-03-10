@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { oneHouse } from '../../js/backend.mjs'
+import { Picture } from 'astro:assets';
+const { id } = Astro.params;
+const house = await oneHouse(id) ;
+console.log(house);
+import IconBed from '../../assets/icons/IconBed.svg'
+import IconBath from '../../assets/icons/IconBath.svg'
+import IconArea from '../../assets/icons/IconArea.svg'
+import IconLove from '../../assets/icons/IconLove.svg'
+import Button from '../../components/ButtonR.astro';
+import IconShare from '../../assets/icons/IconShare.svg'
+import IconType from '../../assets/icons/IconRepair.svg'
+import Iconstatus from '../../assets/icons/IconCheck.svg'
+---
+
+<Layout >
+     <div class=" container my-8 grid grid-cols-3 gap-4">
+       <div>
+   <a href="./"> <p class="text-indigo-500 font-bold">Back to rent</p>
+
+    <h3 class="text-2xl font-semibold">
+        <a class="text-black" href={`/properties/${house.id}`}>{house.house_name}</a></a>
+      </h3>
+      
+      <address class="text-gray-500 not-italic  pb-4">
+        { house.house_address }
+      </address>
+</div>
+      <div class="col-span-3 flex gap-4 self-start justify-self-end"><Button variant="outlined" url="/login" text="Share" ><IconShare class="stroke-indigo-500 relative top-[1px]"/> </Button>
+        <Button variant="outlined" url="/signup" text="Favorite"><IconLove class="stroke-indigo-500 relative top-[1px]"/></Button></div>
+        <div class="col-span-3 grid grid-cols-2 max-h-[500px] grid-rows-2 grid-flow-dense gap-8 ">
+        {house.imageUrlsFull.map((imgUrl, index) => (
+            <Picture pictureAttributes={{class: "rounded-lg overflow-hidden first:col-span-2 first:lg:row-span-2"}}  class="w-full h-full object-cover" src={imgUrl} alt="test" inferSize={true}/> 
+        ))}
+    </div>
+    <div
+    class="relative bg-white px-6 py-8 border border-indigo-200 border-t-0 rounded-b-lg space-y-4"
+  >
+  <div>
+  <p>Rent Price</p>
+    <p class="text-gray-500 flex items-center">
+      <span class="text-2xl font-bold text-indigo-500">${house.house_price}</span
+      >/month
+    </p>
+</div>
+
+    <ul class="flex justify-between text-sm *:flex *:gap-2">
+      <li>
+        <IconBed class="size-5 stroke-indigo-500" /> <span>{ house.house_bed } beds</span>
+      </li>
+      <li>
+        <IconBath class="size-5 stroke-indigo-500" /> <span>{ house.house_bath } bathrooms</span>
+      </li>
+      <li>
+        <IconArea class="size-5 stroke-indigo-500" /> <span>{ house.house_area } m<sup>2</sup></span>
+      </li>
+      <li>
+        <IconType class="size-5 stroke-indigo-500" /> <span>{ house.house_type } </span>
+      </li>
+      <li>
+        <Iconstatus class="size-5 stroke-indigo-500" /> <span>{ house.house_type } </span>
+      </li>
+    </ul>
+</div>
+</div>
+</Layout>

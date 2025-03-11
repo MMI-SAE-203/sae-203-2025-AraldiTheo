@@ -19,11 +19,11 @@ import imgspo4 from "../assets/image/nat.webp";
 ---
 
 <Layout>
-  <div class="bg-[rgb(230,255,215)]">
+  <div class="bg-[rgb(230,255,215)] pt-10">
     <div class="relative">
-      <Image class="w-full" src={imagelanding} alt="">
+      <Image class="w-full lg:w-1/2 lg:ml-96 " src={imagelanding} alt="">
       </Image>
-      <h1 class="absolute top-1/2 text-center text-white">
+      <h1 class="absolute top-1/2 text-center text-white lg:w-56 ">
         Du 5 au 8 juillet 2025 7 Rue du Malsaucy 90300 Sermamagny
       </h1>
     </div>
@@ -42,7 +42,7 @@ import imgspo4 from "../assets/image/nat.webp";
           </div>
           <div class="min-w-full flex-shrink-0 snap-center relative ">
             <Image class="w-full h-full " src={imagecarousel3} alt=""/>
-            <a href=""><h3 class="absolute top-1/2 text-white ml-36">Info pratique</h3></a>
+            <a href="/info"><h3 class="absolute top-1/2 text-white ml-36">Info pratique</h3></a>
           </div>
           <div class="min-w-full flex-shrink-0 snap-center relative ">
             <Image class="w-full h-full" src={imagecarousel4} alt=""/>
@@ -63,7 +63,7 @@ import imgspo4 from "../assets/image/nat.webp";
    <Image  src={imgpart5} alt=""/>
   </div>
   <h3 class="text-center mt-8 mb-8">Sponsors</h3>
-  <div class="grid grid-cols-4 ">
+  <div class="grid grid-cols-4 pb-24">
     <Image src={imgspo1} alt=""/>
     <Image src={imgspo2} alt=""/>
     <Image src={imgspo3} alt=""/>

@@ -3,10 +3,12 @@ import Logo from '../assets/icons/IconLogo.svg'
 import Button from '../components/Button.astro';
 const currentPath = Astro.url.pathname;
 ---
-<header class="flex items-center justify-between px-4 gap-8 border-b-2 border-b-indigo-100 h-20">
+<header class="flex items-center justify-between px-4 gap-8 border-b-2 bg-[rgb(253,234,181)] h-20">
   <a href="/">
     <Logo />
+   
   </a>
+  <h1>Ciné Nature</h1>
   <button
     id="menu-btn"
     class="group relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-black *:transition *:duration-300"
@@ -14,35 +16,38 @@ const currentPath = Astro.url.pathname;
     aria-controls="menu"
     aria-expanded="false"
   >
+
     <span class="group-aria-expanded:translate-y-[5px] group-aria-expanded:rotate-45"></span>
     <span class="group-aria-expanded:-translate-y-[5px] group-aria-expanded:-rotate-45"></span>
   </button>
+  
   <nav
     id="menu"
-    class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-indigo-50 visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
+    class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-[rgb(253,234,181)] visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
     aria-hidden="true"
   >
     <ul class="flex flex-col gap-4 lg:flex-row">
       <li>
-        <a class={`block p-4 rounded-lg text-gray-500 ${currentPath === '/properties' ? 'text-indigo-600 font-bold max-lg:bg-indigo-100 max-lg:rounded-lg' : ''}`} 
-        href="/properties">Rent</a>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/properties' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/properties">Programe films</a>
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/buy">Buy</a>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/properties' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/buy">Programe Activités </a>
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/sell">Sell</a>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/apropos' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/apropos">A propos</a>
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/manage">Manage property</a>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/properties' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/manage">Infos pratiques</a>
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/resources">Resources</a>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/properties' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/manage">Invités</a>
+      </li>
+      <li>
+        <a class={`block p-4 rounded-lg text-black-500 ${currentPath === '/properties' ? 'text-red-600 font-bold max-lg:bg-orange-300 max-lg:rounded-lg' : ''}`} href="/manage">Contact</a>
       </li>
     </ul>
     <div class="flex items-center justify-center gap-4 px-4">
-      <Button variant="outlined" url="/login" text="Login" />
-      <Button variant="dark" url="/signup" text="Sign Up" />
+      <Button variant="dark" url="/signup" text="Billeterie" />
     </div>
   </nav>
 </header>

@@ -1,15 +1,74 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getHouses } from '../js/backend.mjs';
-const houses = await getHouses();
-
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import imagelanding from "../assets/image/image 2.webp";
+import imagecarousel1 from "../assets/image/programefilm.webp";
+import imagecarousel2 from "../assets/image/billet.webp";
+import imagecarousel3 from "../assets/image/image.webp";
+import imagecarousel4 from "../assets/image/activite.webp";
+import imagecarousel5 from "../assets/image/activité.webp";
+import imgpart1 from "../assets/image/GB.webp";
+import imgpart2 from "../assets/image/ufc.webp";
+import imgpart3 from "../assets/image/pc.webp";
+import imgpart4 from "../assets/image/ptb.webp";
+import imgpart5 from "../assets/image/rbfc.webp";
+import imgspo1 from "../assets/image/coca.webp";
+import imgspo2 from "../assets/image/tes.webp";
+import imgspo3 from "../assets/image/eco.webp";
+import imgspo4 from "../assets/image/nat.webp";
 ---
 
 <Layout>
-	<div class="bg-[rgb(238_242_255)]">
-    <div class="container py-20 space-y-8">
-      <h1>Home page</h1>
-
+  <div class="bg-[rgb(230,255,215)]">
+    <div class="relative">
+      <Image class="w-full" src={imagelanding} alt="">
+      </Image>
+      <h1 class="absolute top-1/2 text-center text-white">
+        Du 5 au 8 juillet 2025 7 Rue du Malsaucy 90300 Sermamagny
+      </h1>
     </div>
+    <div>
+      <h3 class="text-center text-black mt-8 "> Vivez la magie du grand écran en plein air ! Avec une sélection de films variée, des classiques aux nouveautés, profitez de soirées inoubliables sous un ciel étoilé. </h3>
+    </div>
+    <div class=" flex items-center justify-center mt-28">
+      <div class=" overflow-x-auto flex space-x-4 snap-x snap-mandatory">
+          <div class="min-w-full flex-shrink-0 snap-center relative ">
+            <Image class=" w-full " src={imagecarousel1} alt="" />
+            <a href=""><h3 class="absolute top-1/2 text-white ml-36">Programe</h3></a>
+          </div>
+          <div class="min-w-full flex-shrink-0 snap-center relative ">
+            <Image class="w-full h-full" src={imagecarousel2} alt=""/>
+            <a href=""><h3 class="absolute top-1/2 text-white ml-36" >Billeterie</h3></a>
+          </div>
+          <div class="min-w-full flex-shrink-0 snap-center relative ">
+            <Image class="w-full h-full " src={imagecarousel3} alt=""/>
+            <a href=""><h3 class="absolute top-1/2 text-white ml-36">Info pratique</h3></a>
+          </div>
+          <div class="min-w-full flex-shrink-0 snap-center relative ">
+            <Image class="w-full h-full" src={imagecarousel4} alt=""/>
+           <a href=""> <h3 class="absolute top-1/2 text-white ml-40">Invités</h3></a>
+          </div>
+          <div class="min-w-full flex-shrink-0 snap-center relative ">
+            <Image class="w-full blur-sm" src={imagecarousel5} alt=""/>
+           <a href=""> <h3 class="absolute top-1/2 text-white ml-36">Activités</h3></a>
+          </div>
+      </div>
   </div>
+  <h3 class="text-center mt-8 mb-8 ">Partenaires institutionnels</h3>
+  <div class="grid grid-cols-3 mb-8" >
+   <Image  src={imgpart1} alt=""/>
+   <Image src={imgpart2} alt=""/>
+   <Image src={imgpart3} alt=""/>
+   <Image src={imgpart4} alt=""/>
+   <Image  src={imgpart5} alt=""/>
+  </div>
+  <h3 class="text-center mt-8 mb-8">Sponsors</h3>
+  <div class="grid grid-cols-4 ">
+    <Image src={imgspo1} alt=""/>
+    <Image src={imgspo2} alt=""/>
+    <Image src={imgspo3} alt=""/>
+    <Image src={imgspo4} alt=""/>
+  </div>
+
+   </div>   
 </Layout>

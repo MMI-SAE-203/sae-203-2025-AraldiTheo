@@ -24,7 +24,7 @@
     @apply font-bold;
   }
   main a {
-    @apply text-indigo-500;
+    @apply text-indigo-500; 
   }
 }
 

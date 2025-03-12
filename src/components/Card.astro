@@ -1,46 +1,37 @@
 ---
-import { Picture } from 'astro:assets';
-import IconBed from '../assets/icons/IconBed.svg'
-import IconBath from '../assets/icons/IconBath.svg'
-import IconArea from '../assets/icons/IconArea.svg'
-import IconLove from '../assets/icons/IconLove.svg'
-const { ...house } = Astro.props;
+
+import ImgPB from './ImgPB.astro';
+import { formatDate } from '../../backend/utilises';
+const { ...film } = Astro.props;
+
 ---
 
 <article>
-    <a href={`/properties/[${house.id}]`}>
-      <Picture pictureAttributes={{ class: "block rounded-t-lg overflow-hidden" }} inferSize={true} src={house.imageUrl} alt="" />
-    </a>
+    <!-- <a href={`/film/[${film.id}]`}>
+      <Picture pictureAttributes={{ class: "block rounded-t-lg overflow-hidden" }} inferSize={true} src={film.imageUrl} alt="" />
+    </a> -->
+    <ImgPB 
+    record={film} 
+    field="affiche" 
+    alt={film.imgAlt} 
+    classPicture="duotone col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black" 
+    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+  />
     <div
-      class="relative bg-white px-6 py-8 border border-indigo-200 border-t-0 rounded-b-lg space-y-4"
+      class="relative px-6 py-8 space-y-4"
     >
-      <p class="text-gray-500 flex items-center">
-        <span class="text-2xl font-bold text-indigo-500">${house.house_price}</span
-        >/month
-      </p>
-      <h3 class="text-2xl font-semibold">
-        <a class="text-black" href={`/properties/${house.id}`}>{house.house_name}</a>
+      <h3 class="text-2xl font-semibold py-4">
+        <a class="text-black" href={`/film/${film.id}`}>{film.nom_film}</a>
       </h3>
-      <button class="absolute right-6 top-8 !mt-0 border border-indigo-200 rounded-full p-2">
-        <IconLove class="stroke-indigo-500 relative top-[1px]"/>
-      </button>
-      <address class="text-gray-500 not-italic border-b border-indigo-100 pb-4">
-        { house.house_address }
+      <p class="text-gray-500 flex items-center">
+        <span class="text-2xl font-bold ">{formatDate(film.date)}</span
+        >
+      </p>
+      <address class="text-gray-500 not-italic  pb-4">
+        { film.ba}
       </address>
 
-      <ul class="flex justify-between text-sm *:flex *:gap-2">
-        <li>
-          <IconBed class="size-5 stroke-indigo-500" /> <span>{ house.house_bed } beds</span>
-        </li>
-        <li>
-          <IconBath class="size-5 stroke-indigo-500" /> <span>{ house.house_bath } bathrooms</span>
-        </li>
-        <li>
-          <IconArea class="size-5 stroke-indigo-500" /> <span>{ house.house_area } m<sup>2</sup></span>
-        </li>
-        <li>
-  
-        </li>
-      </ul>
+     
     </div>
+    
   </article>

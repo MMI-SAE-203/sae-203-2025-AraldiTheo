@@ -1,0 +1,24 @@
+---
+
+
+import ImgPB from "./ImgPB.astro";
+const { ...invite } = Astro.props;
+---
+
+<article>
+    <ImgPB 
+    record={invite} 
+    field="photo" 
+    alt={invite.imgAlt} 
+    classPicture="duotone  group-hover:before:bg-black" 
+    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+  />
+    <div
+      class="relative px-6 py-8 space-y-4"
+    >
+      <h3 class="text-2xl font-semibold py-4">
+        <a class="text-black " href={`/activite/${invite.id}`}>{invite.nom_invite} {invite.prenom_invite}</a>
+      </h3>
+    </div>
+    
+  </article>

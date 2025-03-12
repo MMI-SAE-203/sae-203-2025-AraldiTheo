@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carda from '../../components/Carda.astro';
+import { getactivite } from '../../../backend/backend.mjs';
+const activite = await getactivite();
+---
+
+<Layout>
+	<div class="">
+    <div class="container py-20 space-y-8">
+      <h1 class="text-center">Programe activités</h1>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {activite.length > 0 ? (
+          activite.map((activite) => (
+            <Carda {...activite}  />
+          ))
+        ) : (
+          <p>pas d'activités</p>
+        )}
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { onefilm } from '../../../backend/backend.mjs'
+import ImgPB from '../../components/ImgPB.astro';
+const { id } = Astro.params;
+const films = await onefilm(id) ;
+
+
+---
+
+<Layout >
+     <div class=" container grid grid-cols-3 gap-4">
+      
+       <div>
+   <a href="./"> <p class="text-indigo-500 font-bold py-10">retour sur le Programe</p>
+<div/>
+<ImgPB 
+    record={films} 
+    field="affiche" 
+    alt={films.imgAlt} 
+    classPicture="duotone  group-hover:before:bg-black flex justify-center" 
+    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+  />
+<div class="col-start-2">
+    <h3 class="text-2xl font-semibold">
+        <a class="text-black" href={`/film/${films.id}`}>{films.nom_film}</a></a>
+      </h3>
+      
+      <address class="text-gray-500 not-italic  pb-4">
+        { films.synopsis }
+      </address>
+    </div>
+</div>
+      
+       
+
+</Layout>

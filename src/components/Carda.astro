@@ -1,0 +1,29 @@
+---
+
+
+import ImgPB from "./ImgPB.astro";
+const { ...activite } = Astro.props;
+---
+
+<article>
+    <div>
+    <ImgPB 
+    record={activite} 
+    field="affiche" 
+    alt={activite.imgAlt} 
+    classPicture="duotone  group-hover:before:bg-black" 
+    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+  />
+    <div
+      class="relative px-6 py-8 space-y-4"
+    >
+      <h3 class="text-2xl font-semibold py-4">
+        <a class="text-black" href={`/activite/${activite.id}`}>{activite.Nom_activite}</a>
+      </h3>
+      <p class="text-gray-500 flex items-center">
+        <span class="text-2xl font-bold ">{activite.date}</span
+        >
+      </p>
+    </div>
+</div>
+  </article>

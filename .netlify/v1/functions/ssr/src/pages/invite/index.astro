@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Cardi from '../../components/Cardi.astro';
+import { getinvite } from '../../../backend/backend.mjs';
+const invite = await getinvite();
+---
+
+<Layout>
+  <a href="/invite/add" class=" underline">Ajouter un invite</a>
+	<div class="">
+    <div class="container py-20 space-y-8">
+      <h1 class="text-center">Invités</h1>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {invite.length > 0 ? (
+          invite.map((invite) => (
+            <Cardi {...invite}  />
+          ))
+        ) : (
+          <p>pas d'activités</p>
+        )}
+      </div>
+    </div>
+  </div>
+</Layout>

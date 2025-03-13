@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { oneactivite } from '../../../backend/backend.mjs'
+import ImgPB from '../../components/ImgPB.astro';
+const { id } = Astro.params;
+const activites = await oneactivite(id) ;
+
+
+---
+
+<Layout >
+      
+       <div>
+   <a href="./"> <p class=" font-bold py-10">retour sur les activites</p>
+<div/>
+
+<div class="col-start-2">
+    <h3 class="text-2xl font-semibold">
+        <a class="text-black text-center" href={`/film/${activites.id}`}>{activites.Nom_activite}</a></a>
+      </h3>
+      <ImgPB 
+    record={activites} 
+    field="affiche" 
+    alt={activites.imgAlt} 
+    classPicture="duotone  col-span-2 row span-3 flex items-center justify-center" 
+    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+  />
+      <address class="text-gray-500 not-italic  pb-4">
+        <p>animateur:<a href={` /invite/${activites.expand?.animateur.id}` }>{activites.expand?.animateur.nom_invite} {activites.expand?.animateur.prenom_invite}</a></p>
+      </address>
+    </div>
+
+      
+       
+
+</Layout>

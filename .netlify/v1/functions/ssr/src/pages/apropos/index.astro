@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from "astro:assets";
+import imgvue from "../../assets/image/vue.webp"
+---
+
+
+
+<Layout>
+    <h2 class="text-center mb-8 pt-6"> A propos</h2>
+    <p class="mb-8 lg:text-center">Le festival de cinéma éco-responsable qui se concentre sur la projection de films d'auteur et de documentaires abordant des sujets environnementaux et sociétaux. Il se déroule principalement en plein air, proposant une expérience immersive au cœur de la nature.</p>
+    <Image class="w-full lg:w-1/2 lg:ml-96" src={imgvue} alt=""/>
+        <p class="mt-8 pb-24 lg:text-center">Le festival se déroulera sur la presqu'île du Malsaucy, un superbe environnement naturel à proximité de Belfort. Non seulement cet endroit propose un cadre super pour les projections en plein air, et il renforce également notre dévouement envers la durabilité et la préservation de l'environnement.</p>
+</Layout>

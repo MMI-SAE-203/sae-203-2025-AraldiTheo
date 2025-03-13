@@ -27,7 +27,7 @@ export const getFilm = async (collection = "film") => {
 
 export const onefilm = async (id, collection = "film") => {
   try {
-    const film = await pb.collection(collection).getOne(id);
+    const film = await pb.collection(collection).getOne(id, {expand:'invite'});
 
     film.imageUrlsFull = Array.isArray(film?.affiche)
       ? film.affiche.map((img) =>
@@ -60,6 +60,22 @@ export const getactivite = async (collection = "activite") => {
     return []; 
   }
 };
+export const oneactivite = async (id, collection = "activite") => {
+  try {
+    const activite = await pb.collection(collection).getOne(id,{expand:'animateur'});
+
+    activite.imageUrlsFull = Array.isArray(activite?.affiche)
+      ? activite.affiche.map((img) =>
+          pb.files.getURL(activite, img, { thumb: "1024x1024"})
+        )
+      : [];
+
+    return activite;
+  } catch (error) {
+    console.error("Erreur :", error);
+    return [];
+  }
+};
 export const getinvite = async (collection = "invite") => {
   try {
     const invites = await pb.collection(collection).getFullList();
@@ -76,3 +92,85 @@ export const getinvite = async (collection = "invite") => {
     return []; 
   }
 };
+export const oneinvite = async (id, collection = "invite") => {
+  try {
+    const invite = await pb.collection(collection).getOne(id,{expand:'film'});
+
+    invite.imageUrlsFull = Array.isArray(invite?.photo)
+      ? invite.photo.map((img) =>
+          pb.files.getURL(invite, img, { thumb: "1024x1024"})
+        )
+      : [];
+
+    return invite;
+  } catch (error) {
+    console.error("Erreur :", error);
+    return [];
+  }
+};
+
+export async function updateFilmById(id, data) {
+  return await pb.collection('film').update(id, data);
+}
+
+export async function updateInviteById(id, data) {
+  return await pb.collection('invite').update(id, data);
+}
+
+export async function updateActiviteById(id, data) {
+  return await pb.collection('activite').update(id, data);
+}
+
+export async function DeleteFilmById(id) {
+  await pb.collection('film').delete(id) ;
+}
+export async function DeleteInviteById(id) {
+  await pb.collection('invite').delete(id) ;
+}
+export async function DeleteActiviteById(id) {
+  await pb.collection('activite').delete(id) ;
+}
+
+
+export async function addfilm(data) {
+  try {
+      await pb.collection("film").create(data);
+      return {
+          success: true,
+          message: "le film a été ajouté avec succès.",
+      };
+  } catch (error) {
+      return {
+          success: false,
+          message: "Une erreur est survenue lors de l'ajout du film " + error,
+      };
+  }
+}
+export async function addactivite(data) {
+  try {
+      await pb.collection("activite").create(data);
+      return {
+          success: true,
+          message: "l'activite a été ajouté avec succès.",
+      };
+  } catch (error) {
+      return {
+          success: false,
+          message: "Une erreur est survenue lors de l'ajout de l'activite " + error,
+      };
+  }
+}
+export async function addinvite(data) {
+  try {
+      await pb.collection("invite").create(data);
+      return {
+          success: true,
+          message: "l'activite a été ajouté avec succès.",
+      };
+  } catch (error) {
+      return {
+          success: false,
+          message: "Une erreur est survenue lors de l'ajout de l'activite " + error,
+      };
+  }
+}

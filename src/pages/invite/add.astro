@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { addinvite } from "../../../backend/backend.mjs";
+
+let pbMessage = '';
+if(Astro.request.method == "POST") {
+    const data = await Astro.request.formData();
+    console.log(data);
+    if(new Date(data.get("date")?.toString() || 0) < new Date()){
+        pbMessage = "La date de l'événement doit être supérieure à la date d'aujourd'hui";
+    } else {
+        const response = await addinvite(data);
+        pbMessage = response.message;
+    }
+   
+}
+
+---
+
+<Layout title="Ajouter un événement">
+    <h1 class="text-3xl">Ajouter un invite</h1>
+    <p class="text-red-500">{pbMessage}</p>
+    <form method="post" action="/invite/add" enctype="multipart/form-data" class="flex flex-col p-4">
+        <input type="text" nom-film="nom_invite" placeholder="Nom" class="border my-4 p-2 rounded-md" required/>
+        <input type="text" nom-film="prenom_invite" placeholder="Prenom" class="border my-4 p-2 rounded-md" required/>
+        <textarea  name="synopsis" placeholder="bio" class="border my-4 p-2 rounded-md" required/>
+        <input type="file" name="photo" class="border my-4 p-2 rounded-md" />
+        <input type="submit" value="Ajouter" class="bg-slate-500 rounded-lg p-5" />
+    </form>
+</Layout>

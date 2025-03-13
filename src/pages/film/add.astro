@@ -17,14 +17,14 @@ if(Astro.request.method == "POST") {
 
 ---
 
-<Layout title="Ajouter un événement">
+<Layout title="Ajouter un film">
     <h1 class="text-3xl">Ajouter un film</h1>
     <p class="text-red-500">{pbMessage}</p>
     <form method="post" action="/film/add" enctype="multipart/form-data" class="flex flex-col p-4">
-        <input type="text" nom-film="nom-film" placeholder="Titre" class="border my-4 p-2 rounded-md" required/>
+        <input type="text" nom-film="nom_film" placeholder="Titre" class="border my-4 p-2 rounded-md" required/>
         
         <textarea  name="synopsis" placeholder="synopsis" class="border my-4 p-2 rounded-md" required/>
-        <input type="text" name="ba" placeholder="Bande-annonce" class="border my-4 p-2 rounded-md" required/>
+        <input type="url" name="ba" placeholder="Bande-annonce" class="border my-4 p-2 rounded-md" required/>
         
         <textarea name="info" placeholder="Information" class="border my-4 p-2 rounded-md"></textarea>
         <input type="date" name="date" class="border my-4 p-2 rounded-md" required/>
